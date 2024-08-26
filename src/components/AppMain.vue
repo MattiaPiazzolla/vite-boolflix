@@ -18,6 +18,7 @@ export default {
 
 <template>
 	<div class="container">
+		<h3>Film</h3>
 		<ul>
 			<li v-for="movie in store.movieList" :key="movie.id">
 				{{ movie.title }}
@@ -27,6 +28,18 @@ export default {
 				{{ movie.original_language }}
 				/
 				{{ movie.vote_average }}
+			</li>
+		</ul>
+		<h3>Serie Tv</h3>
+		<ul>
+			<li v-for="series in store.seriesList" :key="series.id">
+				{{ series.name }}
+				/
+				{{ series.original_name }}
+				/
+				{{ series.original_language }}
+				/
+				{{ series.vote_average }}
 			</li>
 		</ul>
 		<CardMovies />

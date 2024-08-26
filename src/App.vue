@@ -25,19 +25,36 @@ export default {
 				.get(
 					`${this.store.apiUrlMovie}&query=${this.store.SearchQuery}&include_adult=false&language=it-IT&page=1`
 				)
-				.then((response) => {
-					this.store.movieList = response.data.results;
+				.then((results) => {
+					this.store.movieList = results.data.results;
 				});
+		},
+		getSeries() {
+			if (this.store.SearchQuery.trim() === "") {
+				this.store.seriesList = [];
+				return;
+			}
+			axios
+				.get(
+					`${this.store.apiUrlSeries}&query=${this.store.SearchQuery}&include_adult=false&language=en-US&page=1`
+				)
+				.then((results) => {
+					this.store.seriesList = results.data.results;
+				});
+		},
+		Search() {
+			this.getMovie();
+			this.getSeries();
 		},
 	},
 	created() {
-		this.getMovie();
+		this.Search();
 	},
 };
 </script>
 
 <template>
-	<AppHeader @search="getMovie" />
+	<AppHeader @search="Search" />
 	<AppMain />
 </template>
 
