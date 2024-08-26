@@ -3,9 +3,7 @@ export default {};
 </script>
 
 <template>
-	<div class="container">
-		<h1>Movie</h1>
-	</div>
+	<div class="container"></div>
 </template>
 
 <style lang="scss"></style>

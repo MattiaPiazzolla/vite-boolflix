@@ -1,7 +1,14 @@
 <script>
 import CardMovies from "./CardMovies.vue";
 import CardSeries from "./CardSeries.vue";
+import { store } from "../store.js";
+
 export default {
+	data() {
+		return {
+			store,
+		};
+	},
 	components: {
 		CardMovies,
 		CardSeries,
@@ -11,7 +18,17 @@ export default {
 
 <template>
 	<div class="container">
-		<h1>Main</h1>
+		<ul>
+			<li v-for="movie in store.movieList" :key="movie.id">
+				{{ movie.title }}
+				/
+				{{ movie.original_title }}
+				/
+				{{ movie.original_language }}
+				/
+				{{ movie.vote_average }}
+			</li>
+		</ul>
 		<CardMovies />
 		<CardSeries />
 	</div>
