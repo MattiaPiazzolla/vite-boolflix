@@ -25,7 +25,10 @@ export default {
 				/
 				{{ movie.original_title }}
 				/
-				{{ movie.original_language }}
+				<img
+					:src="`../../public/FlagsM/${movie.original_language}.svg`"
+					alt=""
+					class="flag" />
 				/
 				{{ movie.vote_average }}
 			</li>
@@ -37,7 +40,10 @@ export default {
 				/
 				{{ series.original_name }}
 				/
-				{{ series.original_language }}
+				<img
+					:src="`../../public/Flags/${series.origin_country}.svg`"
+					alt=""
+					class="flag" />
 				/
 				{{ series.vote_average }}
 			</li>
@@ -47,4 +53,8 @@ export default {
 	</div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+.flag {
+	width: 25px;
+}
+</style>
