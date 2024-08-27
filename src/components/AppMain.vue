@@ -13,6 +13,13 @@ export default {
 		CardMovies,
 		CardSeries,
 	},
+	methods: {
+		calculateStars(vote) {
+			const fullStars = Math.round(vote / 2);
+			const emptyStars = 5 - fullStars;
+			return { fullStars, emptyStars };
+		},
+	},
 };
 </script>
 
@@ -39,7 +46,16 @@ export default {
 					alt=""
 					class="flag" />
 				/
-				{{ Math.round(movie.vote_average / 2) }}
+				<span
+					v-for="i in calculateStars(movie.vote_average).fullStars"
+					:key="`full-star-${i}`">
+					<i class="fa-solid fa-star"></i>
+				</span>
+				<span
+					v-for="n in calculateStars(movie.vote_average).emptyStars"
+					:key="`empty-star-${n}`">
+					<i class="fa-regular fa-star"></i>
+				</span>
 			</li>
 		</ul>
 		<h3>Serie Tv</h3>
