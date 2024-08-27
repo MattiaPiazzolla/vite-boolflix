@@ -24,9 +24,16 @@ export default {
 </script>
 
 <template>
-	<div class="container">
+	<div class="container-fluid">
 		<h3>Film</h3>
-		<ul>
+		<div class="row row-cols-2 row-cols-sm-3 row-cols-lg-6 row-cols-md-4 g-1">
+			<CardMovies
+				v-for="movie in store.movieList"
+				:key="movie.id"
+				:movie="movie" />
+		</div>
+
+		<!-- <ul>
 			<li v-for="movie in store.movieList" :key="movie.id">
 				<img
 					:src="
@@ -57,7 +64,7 @@ export default {
 					<i class="fa-regular fa-star"></i>
 				</span>
 			</li>
-		</ul>
+		</ul> -->
 		<h3>Serie Tv</h3>
 		<ul>
 			<li v-for="series in store.seriesList" :key="series.id">
@@ -91,13 +98,12 @@ export default {
 				</span>
 			</li>
 		</ul>
-		<CardMovies />
 		<CardSeries />
 	</div>
 </template>
 
-<style lang="scss">
-.container {
+<style lang="scss" scoped>
+.container-fluid {
 	padding-top: 75px;
 }
 .flag {

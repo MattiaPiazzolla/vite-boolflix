@@ -55,7 +55,7 @@ export default {
 
 <template>
 	<body>
-		<header class="bg-black position-fixed w-100">
+		<header class="bg-black position-fixed w-100 z-3">
 			<AppHeader @search="Search" />
 		</header>
 		<AppMain />
@@ -64,6 +64,6 @@ export default {
 
 <style>
 body {
-	background-color: rgb(50, 50, 50);
+	background-color: black;
 }
 </style>
