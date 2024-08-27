@@ -21,7 +21,7 @@ export default {
 			<h1 class="w-25">LOGO</h1>
 			<input
 				v-model="store.SearchQuery"
-				@input="searchInput"
+				@keyup.enter="searchInput"
 				type="text"
 				class="searchBar"
 				placeholder="Search..." />

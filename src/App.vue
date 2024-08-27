@@ -16,7 +16,7 @@ export default {
 	},
 	methods: {
 		getMovie() {
-			if (this.store.SearchQuery.trim() === "") {
+			if (this.store.SearchQuery === "") {
 				this.store.movieList = [];
 				return;
 			}
@@ -30,13 +30,13 @@ export default {
 				});
 		},
 		getSeries() {
-			if (this.store.SearchQuery.trim() === "") {
+			if (this.store.SearchQuery === "") {
 				this.store.seriesList = [];
 				return;
 			}
 			axios
 				.get(
-					`${this.store.apiUrlSeries}&query=${this.store.SearchQuery}&include_adult=false&language=en-US&page=1`
+					`${this.store.apiUrlSeries}&query=${this.store.SearchQuery}&include_adult=false&language=it-IT&page=1`
 				)
 				.then((results) => {
 					this.store.seriesList = results.data.results;
