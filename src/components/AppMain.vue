@@ -39,7 +39,7 @@ export default {
 					alt=""
 					class="flag" />
 				/
-				{{ movie.vote_average }}
+				{{ Math.round(movie.vote_average / 2) }}
 			</li>
 		</ul>
 		<h3>Serie Tv</h3>
@@ -63,7 +63,7 @@ export default {
 					alt=""
 					class="flag" />
 				/
-				{{ series.vote_average }}
+				{{ Math.round(series.vote_average / 2) }}
 			</li>
 		</ul>
 		<CardMovies />
