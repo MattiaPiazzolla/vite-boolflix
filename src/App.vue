@@ -54,7 +54,7 @@ export default {
 </script>
 
 <template>
-	<body>
+	<body class="bg-grey">
 		<header class="bg-black position-fixed w-100 z-3">
 			<AppHeader @search="Search" />
 		</header>
@@ -62,8 +62,4 @@ export default {
 	</body>
 </template>
 
-<style>
-body {
-	background-color: black;
-}
-</style>
+<style lang="scss"></style>

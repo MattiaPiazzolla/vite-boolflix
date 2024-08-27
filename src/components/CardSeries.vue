@@ -1,7 +1,7 @@
 <script>
 export default {
 	props: {
-		movie: Object,
+		series: Object,
 	},
 	methods: {
 		calculateStars(vote) {
@@ -18,31 +18,31 @@ export default {
 		<div class="card">
 			<img
 				:src="
-					movie.poster_path
-						? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-						: movie.backdrop_path
-						? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
-						: `https://placehold.co/500x750?text=${movie.title}`
+					series.poster_path
+						? `https://image.tmdb.org/t/p/w500${series.poster_path}`
+						: series.backdrop_path
+						? `https://image.tmdb.org/t/p/w500${series.backdrop_path}`
+						: `https://placehold.co/500x750?text=${series.name}`
 				"
 				alt=""
 				class="coverCard" />
 			<!-- HOVER -->
 			<div class="cardHover d-flex align-items-center">
 				<div class="hoverContent">
-					<h6>{{ movie.title }}</h6>
-					<p class="mb-0">{{ movie.original_title }}</p>
+					<h6>{{ series.name }}</h6>
+					<p class="my-3">Titolo originale: {{ series.original_name }}</p>
 					<img
-						:src="`../../public/FlagsM/${movie.original_language}.svg`"
+						:src="`../../public/FlagsM/${series.original_language}.svg`"
 						alt=""
-						class="flag" />
+						class="flag my-3" />
 					<div class="stars">
 						<span
-							v-for="i in calculateStars(movie.vote_average).fullStars"
+							v-for="i in calculateStars(series.vote_average).fullStars"
 							:key="`full-star-${i}`">
 							<i class="fa-solid fa-star"></i>
 						</span>
 						<span
-							v-for="n in calculateStars(movie.vote_average).emptyStars"
+							v-for="n in calculateStars(series.vote_average).emptyStars"
 							:key="`empty-star-${n}`">
 							<i class="fa-regular fa-star"></i>
 						</span>

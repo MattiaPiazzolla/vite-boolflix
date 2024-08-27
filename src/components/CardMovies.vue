@@ -15,7 +15,7 @@ export default {
 
 <template>
 	<div class="col position-relative">
-		<div class="card">
+		<div class="card border-0">
 			<img
 				:src="
 					movie.poster_path
@@ -30,11 +30,11 @@ export default {
 			<div class="cardHover d-flex align-items-center">
 				<div class="hoverContent">
 					<h6>{{ movie.title }}</h6>
-					<p class="mb-0">{{ movie.original_title }}</p>
+					<p class="">Titolo originale: {{ movie.original_title }}</p>
 					<img
 						:src="`../../public/FlagsM/${movie.original_language}.svg`"
 						alt=""
-						class="flag" />
+						class="flag my-3" />
 					<div class="stars">
 						<span
 							v-for="i in calculateStars(movie.vote_average).fullStars"
