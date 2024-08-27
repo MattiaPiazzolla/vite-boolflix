@@ -79,7 +79,16 @@ export default {
 					alt=""
 					class="flag" />
 				/
-				{{ Math.round(series.vote_average / 2) }}
+				<span
+					v-for="i in calculateStars(series.vote_average).fullStars"
+					:key="`full-star-${i}`">
+					<i class="fa-solid fa-star"></i>
+				</span>
+				<span
+					v-for="n in calculateStars(series.vote_average).emptyStars"
+					:key="`empty-star-${n}`">
+					<i class="fa-regular fa-star"></i>
+				</span>
 			</li>
 		</ul>
 		<CardMovies />
