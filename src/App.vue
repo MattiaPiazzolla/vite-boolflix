@@ -54,8 +54,16 @@ export default {
 </script>
 
 <template>
-	<AppHeader @search="Search" />
-	<AppMain />
+	<body>
+		<header class="bg-black position-fixed w-100">
+			<AppHeader @search="Search" />
+		</header>
+		<AppMain />
+	</body>
 </template>
 
-<style></style>
+<style>
+body {
+	background-color: rgb(50, 50, 50);
+}
+</style>

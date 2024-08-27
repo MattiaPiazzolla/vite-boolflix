@@ -97,6 +97,9 @@ export default {
 </template>
 
 <style lang="scss">
+.container {
+	padding-top: 75px;
+}
 .flag {
 	width: 25px;
 }
