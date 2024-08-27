@@ -21,6 +21,15 @@ export default {
 		<h3>Film</h3>
 		<ul>
 			<li v-for="movie in store.movieList" :key="movie.id">
+				<img
+					:src="
+						movie.poster_path
+							? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+							: movie.backdrop_path
+							? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
+							: `https://placehold.co/500x750?text=${movie.title}`
+					"
+					alt="" />
 				{{ movie.title }}
 				/
 				{{ movie.original_title }}
@@ -36,6 +45,15 @@ export default {
 		<h3>Serie Tv</h3>
 		<ul>
 			<li v-for="series in store.seriesList" :key="series.id">
+				<img
+					:src="
+						series.poster_path
+							? `https://image.tmdb.org/t/p/w500${series.poster_path}`
+							: series.backdrop_path
+							? `https://image.tmdb.org/t/p/w500${series.backdrop_path}`
+							: `https://placehold.co/500x750?text=${series.name}`
+					"
+					alt="" />
 				{{ series.name }}
 				/
 				{{ series.original_name }}
