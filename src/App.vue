@@ -17,7 +17,9 @@ export default {
 	methods: {
 		getMovie() {
 			if (this.store.SearchQuery === "") {
-				this.store.movieList = [];
+				axios.get(this.store.apiUrlMovieTrending).then((results) => {
+					this.store.movieList = results.data.results;
+				});
 				return;
 			}
 
@@ -29,9 +31,25 @@ export default {
 					this.store.movieList = results.data.results;
 				});
 		},
+
+		getMovieCast() {
+			this.store.movieCast = [];
+			this.store.movieList.forEach((movie) => {
+				axios
+					.get(
+						`${this.store.apiMovieCast}${movie.id}/credits?api_key=8f798c0bdd5d474178d2da0aeb1e10f5`
+					)
+					.then((results) => {
+						this.store.movieCast = results.data.cast;
+					});
+			});
+		},
+
 		getSeries() {
 			if (this.store.SearchQuery === "") {
-				this.store.seriesList = [];
+				axios.get(this.store.apiUrlSeriesTrending).then((results) => {
+					this.store.seriesList = results.data.results;
+				});
 				return;
 			}
 			axios
@@ -45,6 +63,9 @@ export default {
 		Search() {
 			this.getMovie();
 			this.getSeries();
+			setTimeout(() => {
+				this.getMovieCast();
+			}, 2000);
 		},
 	},
 	created() {
@@ -62,4 +83,9 @@ export default {
 	</body>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+@import "./style/generals.scss";
+.logoText {
+	font-family: "Bebas Neue", sans-serif;
+}
+</style>

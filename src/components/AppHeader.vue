@@ -20,10 +20,7 @@ export default {
 		<div class="row justify-content-between px-5 py-1">
 			<div class="logo-side">
 				<img src="../../public/logo-w.png" alt="" class="logoHeader" />
-				<h2 class="text-uppercase mb-0">
-					<span class="text-light">Bool</span
-					><span class="text-danger">flix</span>
-				</h2>
+				<h2 class="text-uppercase mb-0 logoText text-danger">Boolflix</h2>
 			</div>
 			<div class="right-side">
 				<input

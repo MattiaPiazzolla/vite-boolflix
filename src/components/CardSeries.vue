@@ -15,7 +15,7 @@ export default {
 
 <template>
 	<div class="col position-relative">
-		<div class="card">
+		<div class="card border-0">
 			<img
 				:src="
 					series.poster_path
@@ -29,7 +29,7 @@ export default {
 			<!-- HOVER -->
 			<div class="cardHover d-flex align-items-center">
 				<div class="hoverContent">
-					<h6>{{ series.name }}</h6>
+					<h4 class="fw-bolder">{{ series.name }}</h4>
 					<p class="my-3">Titolo originale: {{ series.original_name }}</p>
 					<img
 						:src="`../../public/FlagsM/${series.original_language}.svg`"
@@ -42,8 +42,8 @@ export default {
 							<i class="fa-solid fa-star"></i>
 						</span>
 						<span
-							v-for="n in calculateStars(series.vote_average).emptyStars"
-							:key="`empty-star-${n}`">
+							v-for="i in calculateStars(series.vote_average).emptyStars"
+							:key="`empty-star-${i}`">
 							<i class="fa-regular fa-star"></i>
 						</span>
 					</div>
