@@ -1,13 +1,31 @@
 <script>
+import axios from "axios";
+import { store } from "../store.js";
+
 export default {
 	props: {
 		series: Object,
+	},
+	data() {
+		return {
+			store,
+			currentCast: [],
+		};
 	},
 	methods: {
 		calculateStars(vote) {
 			const fullStars = Math.round(vote / 2);
 			const emptyStars = 5 - fullStars;
 			return { fullStars, emptyStars };
+		},
+		getSeriesCast(id) {
+			axios
+				.get(
+					`${this.store.apiSeriesCast}${id}/credits?api_key=8f798c0bdd5d474178d2da0aeb1e10f5&language=it-IT&page=1`
+				)
+				.then((results) => {
+					this.currentCast = results.data.cast.slice(0, 5);
+				});
 		},
 	},
 };
@@ -55,7 +73,8 @@ export default {
 						type="button"
 						data-bs-toggle="offcanvas"
 						:data-bs-target="'#offcanvasBottom-' + series.id"
-						aria-controls="offcanvasBottom-">
+						aria-controls="offcanvasBottom-"
+						@click="getSeriesCast(series.id)">
 						<i class="fas fa-play"></i>
 					</button>
 				</div>
@@ -113,9 +132,13 @@ export default {
 				<p class="my-3 fw-bold">Cast:</p>
 				<div class="castContainer">
 					<div class="castRow">
-						<div class="castCard" v-for="actor in series.cast" :key="actor.id">
+						<div class="castCard" v-for="actor in currentCast" :key="actor">
 							<img
-								:src="`https://image.tmdb.org/t/p/w342${actor.profile_path}`"
+								:src="
+									actor.profile_path
+										? `https://image.tmdb.org/t/p/w342${actor.profile_path}`
+										: 'https://placehold.co/342x500?text=No+Image'
+								"
 								alt="" />
 							<p>{{ actor.original_name }}</p>
 						</div>
@@ -250,5 +273,6 @@ export default {
 	margin-top: 5px;
 	font-size: 15px;
 	color: #ffffff;
+	white-space: normal;
 }
 </style>
