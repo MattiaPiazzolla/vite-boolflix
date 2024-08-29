@@ -77,7 +77,7 @@ export default {
 				data-bs-dismiss="offcanvas"
 				aria-label="Close"></button>
 		</div>
-		<div class="offcanvas-body p-5 w-100 d-flex">
+		<div class="offcanvas-body px-5 py-0 m-0 w-100 d-flex">
 			<div class="leftOffBody overflow-scroll">
 				<p class="">
 					Titolo originale:
@@ -110,6 +110,17 @@ export default {
 					<span class="fw-bold">Data di uscita:</span>
 					{{ movie.release_date }}
 				</p>
+				<p class="my-3 fw-bold">Cast:</p>
+				<div class="castContainer">
+					<div class="castRow">
+						<div class="castCard" v-for="actor in movie.cast" :key="actor.id">
+							<img
+								:src="`https://image.tmdb.org/t/p/w342${actor.profile_path}`"
+								alt="" />
+							<p>{{ actor.original_name }}</p>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="image-container w-50 d-none d-md-block">
 				<img
@@ -198,5 +209,46 @@ export default {
 	@media (min-width: 768px) {
 		width: 50%;
 	}
+}
+
+.castContainer {
+	width: 100%;
+	overflow-x: auto;
+	white-space: nowrap;
+}
+
+.castRow {
+	display: flex;
+	flex-wrap: nowrap;
+
+	&:hover {
+		.castCard {
+			opacity: 0.3;
+		}
+	}
+	.castCard {
+		flex: 0 0 auto;
+		margin-right: 20px;
+		text-align: center;
+		width: 125px;
+		transition: 0.4s;
+
+		&:hover {
+			opacity: 1;
+		}
+
+		img {
+			width: 100%;
+			aspect-ratio: 1 / 1;
+			object-fit: cover;
+			border-radius: 50%;
+		}
+	}
+}
+
+.castCard p {
+	margin-top: 5px;
+	font-size: 15px;
+	color: #ffffff;
 }
 </style>
